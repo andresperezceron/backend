@@ -9,7 +9,7 @@ function server(route, handle) {
         route(handle, pathname, response);
     }
 
-    http.createServer(onRequest).listen(8888);
+    http.createServer(onRequest).listen(6969);
     console.log("Servidor INICIADO¡");
 }
 
