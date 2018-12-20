@@ -7,7 +7,7 @@ var handle = {
     "/" : requestHandlers.iniciar,
     "/iniciar" : requestHandlers.iniciar,
     "/subir" : requestHandlers.subir,
-    ".html" : requestHandlers.html,
-    ".css" : requestHandlers.css
+    ".html" : requestHandlers.staticFileByExtension,
+    ".css" : requestHandlers.staticFileByExtension
 };
 server(router, handle);
