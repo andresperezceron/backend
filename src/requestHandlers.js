@@ -14,8 +14,27 @@ function staticFileByExtension(response, pathname, contentType) {
     });
 }
 
+function getDirs(response) {
+    var fs = require("fs");
+    var rootDir = "../www/";
+    var dirs = [];
+    fs.readdir(rootDir, function(err, files) {
+        for(var i = 0; i < files.length; i++) {
+            fs.stat(rootDir + files[i], function(err, stat) {
+                if(stat.isDirectory()) {
+                    dirs.push(files[this.i]);
+                }
+                if(files.length === (this.i + 1)) {
+                    response.writeHead(200,{"Content-Type" : "text/html"});
+                    response.end(JSON.stringify({"dirs" : dirs}));
+                }
+            }.bind({i: i}));
+        }
+    });
+}
+
 function iniciar(response) {
-   /* var fs = require("fs");
+    var fs = require("fs");
     fs.readFile("../www/index.html", function(bError, content) {
         if(bError) {
             response.writeHead(500);
@@ -25,43 +44,7 @@ function iniciar(response) {
             response.writeHead(200,{"Content-Type" : "text/html"});
             response.end(content);
         }
-    });*/
-
-    var fs = require("fs");
-    var rootDir = "../www/";
-    var dirs = [];
-
-    function getDirs(callback) {
-        fs.readdir(rootDir, function(err, files) {
-            for(var i = 0; i < files.length; ++i) {
-                var file = files[i];
-                var filePath = rootDir + file;
-                fs.stat(filePath, function(err, stat) {
-                    if(stat.isDirectory()) {
-                        dirs.push(this.file);
-                    }
-                    if(files.length === (this.i + 1)) {
-                        callback(dirs);
-                    }
-                }.bind({file : file, i: i}));
-            }
-        });
-    }
-    getDirs(function (directories) {
-        fs.readFile("../www/html5css3/index.html", function(bError, content) {
-            if(bError) {
-                response.writeHead(500);
-                response.end();
-            }
-            else {
-                response.writeHead(200,{"Content-Type" : "text/html"});
-                response.end(content);
-            }
-        });
-        //response.writeHead(200, {"Content-Type": "text/html"});
-        //response.end(directories.toString());
     });
-
 }
 
 function subir(response) {
@@ -72,4 +55,5 @@ function subir(response) {
 
 module.exports.iniciar = iniciar;
 module.exports.subir = subir;
+module.exports.getDirs = getDirs;
 module.exports.staticFileByExtension = staticFileByExtension;

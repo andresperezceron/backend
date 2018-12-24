@@ -13,7 +13,7 @@ function router(handle, pathname, response) {
 
     if(typeof handle[pathname] === 'function') {
         return handle[pathname](response);
-    } else if(extension === ".html" || extension === ".css")  {
+    } else if(extension === ".html" || extension === ".css" || extension === ".js")  {
         return handle[extension](response, pathname, contentType);
     }else {
         console.log("No se encontro manipulador para " + pathname);
