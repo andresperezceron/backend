@@ -28,7 +28,7 @@ function getDirs(response) {
                     response.writeHead(200,{"Content-Type" : "text/html"});
                     response.end(JSON.stringify({"dirs" : dirs}));
                 }
-            }.bind({i: i}));
+            }.bind({i : i}));
         }
     });
 }
