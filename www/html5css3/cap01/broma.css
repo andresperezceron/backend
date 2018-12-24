@@ -1,0 +1,24 @@
+
+
+header {
+    font-size: 40px;
+    padding: 3em;
+    color: red;
+    background-color: black;
+}
+body {
+    background-color: black;
+}
+
+ul {
+    margin-left: 2em;
+    color: white;
+    font-size: 40px;
+}
+
+p {
+    margin-left: 4em;
+    margin-top: 4em;
+    color: white;
+    font-size: 30px;
+}
