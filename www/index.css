@@ -1,5 +1,7 @@
 
-
+a {
+    text-decoration: none;
+}
 p {
     font-size: 30px;
     margin-left: 1em;
@@ -7,6 +9,7 @@ p {
 }
 
 ul {
+    font-size: 20px;
     padding-bottom: 40em;
     margin-left: 1em;
 }
@@ -18,7 +21,6 @@ body {
 footer {
     padding: 4em;
     background-color: darkgray;
-    border: 1px solid #333333;
     text-align: center;
 }
 
@@ -31,6 +33,5 @@ footer {
 .header {
     padding: 2em;
     background-color: khaki;
-    border: 1px solid #333333;
     text-align: center;
 }

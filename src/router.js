@@ -6,6 +6,15 @@ function router(handle, pathname, response) {
     var extension = path.extname(pathname);
     var contentType = "text/html";
 
+    /* favicon ico */
+    if(pathname === "/favicon.ico") {
+        var fs = require("fs");
+        response.setHeader("Content-Type", "image/x-icon");
+        fs.createReadStream("../www/favicon.ico").pipe(response);
+        return;
+    }
+
+    /* asignamos el coontentType */
     switch(extension) {
         case ".css" : contentType = "text/css"; break;
         case ".js" : contentType = "text/javascript"; break;

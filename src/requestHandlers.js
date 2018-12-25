@@ -53,7 +53,12 @@ function subir(response) {
     response.end();
 }
 
+function favicon(response) {
+
+}
+
 module.exports.iniciar = iniciar;
 module.exports.subir = subir;
 module.exports.getDirs = getDirs;
+module.exports.favicon = favicon;
 module.exports.staticFileByExtension = staticFileByExtension;

@@ -8,7 +8,6 @@ function server(route, handle) {
         var pathname = url.parse(request.url).pathname;
         route(handle, pathname, response);
     }
-
     http.createServer(onRequest).listen(6969);
     console.log("Servidor INICIADO¡");
 }
