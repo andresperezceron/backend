@@ -53,9 +53,6 @@ function subir(response) {
     response.end();
 }
 
-function favicon(response) {
-
-}
 
 module.exports.iniciar = iniciar;
 module.exports.subir = subir;
