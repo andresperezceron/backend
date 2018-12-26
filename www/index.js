@@ -1,6 +1,6 @@
 
 
-var uri = "http://localhost:6969/getDirs";
+var uri = "/getDirs";
 var peti = new XMLHttpRequest();
 
 peti.open("GET", uri, true);

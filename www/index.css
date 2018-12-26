@@ -1,37 +1,47 @@
 
 a {
     text-decoration: none;
+    color: black;
 }
+
+h1 {
+    font-size: 50px;
+}
+
 p {
     font-size: 30px;
-    margin-left: 1em;
+    margin-left: 2em;
     margin-top: 1em;
 }
 
 ul {
     font-size: 20px;
-    padding-bottom: 40em;
-    margin-left: 1em;
+    padding-bottom: 25em;
+    margin-left: 3em;
 }
 
 body {
-    border: 1px solid #333;
+    margin: 0;
+    height:100%;
+    background-image: url("bodye.png");
 }
 
 footer {
-    padding: 4em;
-    background-color: darkgray;
+    border-top: 3px solid #333;
+    padding: 10em;
+    background-image: url("nodec.png");
     text-align: center;
 }
 
 .fondo-gris {
-    background-color: #eee;
+    background-color: yellowgreen;
     padding: 0 5px;
     border: 1px solid #333;
 }
 
 .header {
+    color: yellowgreen;
     padding: 2em;
-    background-color: khaki;
+    background-image: url("headerc.png");
     text-align: center;
 }

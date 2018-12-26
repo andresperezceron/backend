@@ -1,15 +1,15 @@
 
 
-function staticFileByExtension(response, pathname, contentType) {
+function staticFileByExtension(config) {
     var fs = require("fs");
-    fs.readFile("../www" + pathname, function(bError, content) {
+    fs.readFile(config.path, function(bError, content) {
         if(bError) {
-            response.writeHead(500);
-            response.end();
+            config.response.writeHead(500);
+            config.response.end();
         }
         else {
-            response.writeHead(200,{"Content-Type" : contentType});
-            response.end(content);
+            config.response.writeHead(200,{"Content-Type" : config.contentType});
+            config.response.end(content);
         }
     });
 }

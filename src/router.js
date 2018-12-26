@@ -5,6 +5,7 @@ function router(handle, pathname, response) {
     var path = require("path");
     var extension = path.extname(pathname);
     var contentType = "text/html";
+    var rootDir = (extension === ".png") ? "../images" : "../www";
 
     /* favicon ico */
     if(pathname === "/favicon.ico") {
@@ -18,12 +19,20 @@ function router(handle, pathname, response) {
     switch(extension) {
         case ".css" : contentType = "text/css"; break;
         case ".js" : contentType = "text/javascript"; break;
+        case ".png" : contentType = "image/png"; break;
     }
+
+    /* creamos el objeto config para el manejador de extensiones */
+    var config = {
+        "response" : response,
+        "path" : rootDir + pathname,
+        "contentType" : contentType
+    };
 
     if(typeof handle[pathname] === 'function') {
         return handle[pathname](response);
-    } else if(extension === ".html" || extension === ".css" || extension === ".js")  {
-        return handle[extension](response, pathname, contentType);
+    } else if(extension === ".html" || extension === ".css" || extension === ".js" || extension === ".png")  {
+        return handle[extension](config);
     }else {
         console.log("No se encontro manipulador para " + pathname);
         response.writeHead(404, {"Content-Type": "text/html"});

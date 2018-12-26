@@ -8,6 +8,7 @@ var handle = {
     "/iniciar" : requestHandlers.iniciar,
     "/subir" : requestHandlers.subir,
     "/getDirs" : requestHandlers.getDirs,
+    ".png" : requestHandlers.staticFileByExtension,
     ".html" : requestHandlers.staticFileByExtension,
     ".css" : requestHandlers.staticFileByExtension,
     ".js" : requestHandlers.staticFileByExtension
