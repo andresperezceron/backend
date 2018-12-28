@@ -1,11 +1,13 @@
 
 
-function router(handle, pathname, response) {
-    console.log("A punto de rutear un petición para: " + pathname);
+function router(handle, request, response) {
+    var url = require("url");
     var path = require("path");
+    var pathname = url.parse(request.url).pathname;
     var extension = path.extname(pathname);
+    var rootDir = (extension === ".png") ? "../www/images" : "../www";
     var contentType = "text/html";
-    var rootDir = (extension === ".png") ? "../images" : "../www";
+    console.log("A punto de rutear un petición para: " + pathname);
 
     /* favicon ico */
     if(pathname === "/favicon.ico") {
@@ -22,15 +24,16 @@ function router(handle, pathname, response) {
         case ".png" : contentType = "image/png"; break;
     }
 
-    /* creamos el objeto config para el manejador de extensiones */
+    /* creamos el objeto config para los manejadores */
     var config = {
         "response" : response,
+        "request" : request,
         "path" : rootDir + pathname,
         "contentType" : contentType
     };
 
     if(typeof handle[pathname] === 'function') {
-        return handle[pathname](response);
+        return handle[pathname](config);
     } else if(extension === ".html" || extension === ".css" || extension === ".js" || extension === ".png")  {
         return handle[extension](config);
     }else {
@@ -40,4 +43,5 @@ function router(handle, pathname, response) {
         response.end();
     }
 }
+
 module.exports = router;

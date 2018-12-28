@@ -14,7 +14,7 @@ function staticFileByExtension(config) {
     });
 }
 
-function getDirs(response) {
+function getDirs(config) {
     var fs = require("fs");
     var rootDir = "../www/";
     var dirs = [];
@@ -25,37 +25,44 @@ function getDirs(response) {
                     dirs.push(files[this.i]);
                 }
                 if(files.length === (this.i + 1)) {
-                    response.writeHead(200,{"Content-Type" : "text/html"});
-                    response.end(JSON.stringify({"dirs" : dirs}));
+                    config.response.writeHead(200,{"Content-Type" : config.contentType});
+                    config.response.end(JSON.stringify({"dirs" : dirs}));
                 }
             }.bind({i : i}));
         }
     });
 }
 
-function iniciar(response) {
+function iniciar(config) {
     var fs = require("fs");
     fs.readFile("../www/index.html", function(bError, content) {
         if(bError) {
-            response.writeHead(500);
-            response.end();
+            config.response.writeHead(500);
+            config.response.end();
         }
         else {
-            response.writeHead(200,{"Content-Type" : "text/html"});
-            response.end(content);
+            config.response.writeHead(200,{"Content-Type" : config.contentType});
+            config.response.end(content);
         }
     });
 }
 
-function subir(response) {
-    response.writeHead(200, {"Content-Type": "text/html"});
-    response.write("Hola Subir");
-    response.end();
+function subir(config) {
+    const formidable = require('formidable');
+    const entrada = new formidable.IncomingForm();
+    entrada.uploadDir = "upload";
+    entrada.parse(config.request);
+    entrada.on("fileBegin", function(fiel, file) {
+        file.path = "../www/upload/" + file.name;
+    });
+    entrada.on("end", function() {
+        config.response.writeHead(200, {"Content-Type": config.contentType});
+        config.response.write("Hola Subir");
+        config.response.end();
+    });
 }
-
 
 module.exports.iniciar = iniciar;
 module.exports.subir = subir;
 module.exports.getDirs = getDirs;
-module.exports.favicon = favicon;
 module.exports.staticFileByExtension = staticFileByExtension;
