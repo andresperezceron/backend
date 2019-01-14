@@ -21,7 +21,7 @@ function getDirs(config) {
     fs.readdir(rootDir, function(err, files) {
         for(var i = 0; i < files.length; i++) {
             fs.stat(rootDir + files[i], function(err, stat) {
-                if(stat.isDirectory()) {
+                if(stat.isDirectory() && files[this.i] !== "images" && files[this.i] !== "upload") {
                     dirs.push(files[this.i]);
                 }
                 if(files.length === (this.i + 1)) {

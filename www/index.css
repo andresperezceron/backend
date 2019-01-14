@@ -23,13 +23,13 @@ ul {
 body {
     margin: 0;
     height:100%;
-    background-image: url("bodye.png");
+    background-image: url("images/bodye.png");
 }
 
 footer {
     border-top: 3px solid #333;
     padding: 10em;
-    background-image: url("nodec.png");
+    background-image: url("images/nodec.png");
     text-align: center;
 }
 
@@ -42,6 +42,6 @@ footer {
 .header {
     color: yellowgreen;
     padding: 2em;
-    background-image: url("headerc.png");
+    background-image: url("images/headerc.png");
     text-align: center;
 }

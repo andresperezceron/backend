@@ -5,7 +5,8 @@ function router(handle, request, response) {
     var path = require("path");
     var pathname = url.parse(request.url).pathname;
     var extension = path.extname(pathname);
-    var rootDir = (extension === ".png") ? "../www/images" : "../www";
+    var rootDir = "../www";
+    //var rootDir = (extension === ".png") ? "../www/images" : "../www";
     var contentType = "text/html";
     console.log("A punto de rutear un petición para: " + pathname);
 
