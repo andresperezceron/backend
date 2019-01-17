@@ -11,6 +11,7 @@ var handle = {
     ".png" : requestHandlers.staticFileByExtension,
     ".html" : requestHandlers.staticFileByExtension,
     ".css" : requestHandlers.staticFileByExtension,
-    ".js" : requestHandlers.staticFileByExtension
+    ".js" : requestHandlers.staticFileByExtension,
+    ".ico" : requestHandlers.faviconIcon
 };
 server(router, handle);

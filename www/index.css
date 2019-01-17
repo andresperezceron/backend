@@ -1,7 +1,7 @@
 
 a {
-    text-decoration: none;
-    color: black;
+  /*  text-decoration: none;
+    color: black;*/
 }
 
 h1 {
@@ -15,9 +15,12 @@ p {
 }
 
 ul {
-    font-size: 20px;
-    padding-bottom: 25em;
+    font-size: 23px;
     margin-left: 3em;
+}
+
+li {
+    padding-bottom: 15px;
 }
 
 body {
@@ -28,9 +31,11 @@ body {
 
 footer {
     border-top: 3px solid #333;
-    padding: 10em;
+    padding: 8em;
+    width: 100%;
+    bottom: 0;
     background-image: url("images/nodec.png");
-    text-align: center;
+    position: fixed;
 }
 
 .fondo-gris {

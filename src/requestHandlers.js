@@ -1,5 +1,4 @@
 
-
 function staticFileByExtension(config) {
     var fs = require("fs");
     fs.readFile(config.path, function(bError, content) {
@@ -10,6 +9,18 @@ function staticFileByExtension(config) {
         else {
             config.response.writeHead(200,{"Content-Type" : config.contentType});
             config.response.end(content);
+        }
+    });
+}
+
+function faviconIcon(config) {
+    var fs = require("fs");
+    fs.stat(config.path, (err, stats) => {
+        if(!err) {
+            if(stats.isFile()) {
+                config.response.setHeader("Content-Type", config.contentType);
+                fs.createReadStream(config.path).pipe(config.response);
+            }
         }
     });
 }
@@ -66,3 +77,4 @@ module.exports.iniciar = iniciar;
 module.exports.subir = subir;
 module.exports.getDirs = getDirs;
 module.exports.staticFileByExtension = staticFileByExtension;
+module.exports.faviconIcon = faviconIcon;

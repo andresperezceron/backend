@@ -7,11 +7,11 @@ peti.open("GET", uri, true);
 peti.onreadystatechange = function() {
     if(peti.readyState === 4)
         if(peti.status === 200)
-            miFuncion(peti.responseText);
+            getDir(peti.responseText);
 };
 peti.send(null);
 
-function miFuncion(response) {
+function getDir(response) {
     var lista = document.getElementById("dirs");
     JSON.parse(response).dirs.forEach(function(item) {
         var a = document.createElement("a");
